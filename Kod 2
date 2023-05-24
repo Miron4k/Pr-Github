@@ -1,0 +1,59 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        double[] array = { 1.5, 2.8, 3.2, 4.7, 5.1, 6.9, 7.4, 8.6, 9.3 };
+
+        double A = 3.0;
+        double B = 7.0;
+
+        int countInRange = CountElementsInRange(array, A, B);
+        double sumAfterMax = SumElementsAfterMax(array);
+        SortArrayByDescendingAbsoluteValues(array);
+
+        Console.WriteLine("Count of elements in range [{0}, {1}]: {2}", A, B, countInRange);
+        Console.WriteLine("Sum of elements after maximum element: {0}", sumAfterMax);
+        Console.WriteLine("Sorted array in descending order of absolute values:");
+        foreach (double element in array)
+        {
+            Console.WriteLine(element);
+        }
+    }
+    static int CountElementsInRange(double[] array, double A, double B)
+    {
+        int count = 0;
+        foreach (double element in array)
+        {
+            if (element >= A && element <= B)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+    static double SumElementsAfterMax(double[] array)
+    {
+        int maxIndex = 0;
+        double maxValue = double.MinValue;
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (array[i] > maxValue)
+            {
+                maxValue = array[i];
+                maxIndex = i;
+            }
+        }
+        double sum = 0.0;
+        for (int i = maxIndex + 1; i < array.Length; i++)
+        {
+            sum += array[i];
+        }
+        return sum;
+    }
+    static void SortArrayByDescendingAbsoluteValues(double[] array)
+    {
+        Array.Sort(array, (x, y) => Math.Abs(y).CompareTo(Math.Abs(x)));
+    }
+}
