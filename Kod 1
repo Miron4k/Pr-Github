@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Pr2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Type the x");
+            string text = Console.ReadLine();
+            double x = double.Parse(text);
+            double y = 0;
+
+            // Pr1
+            if (2 < x && x < 26)
+            {
+                y = (Math.Pow(x, 4) + 5 * Math.Pow(x, 3) + 7) / (2 * Math.Pow(x, 5) + 3 * Math.Pow(x, 4) + 1);
+
+            }
+            // Pr2
+            else if (27 < x && x < 30)
+            {
+                double sum = 1;
+                for (int i = 2; i < x; i++)
+                {
+                    sum += i;
+                    y = (0.5 * i + 2);
+
+                }
+            }
+            // Pr3
+            else if (x > 31)
+            {
+                y = Math.Pow(x, 2) - 3 * x + 7;
+            }
+            Console.WriteLine("Y=" + y);
+        }
+
+    }
+
+
+}
